@@ -1,0 +1,91 @@
+# Binaries
+clauder
+out/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Build output
+dist/
+build/
+
+# Logs
+output-*.log
+snapshot-*.log
+snapshot2-*.log
+*.log
+
+# Editor files
+.aider*
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Go specific
+vendor/
+*.mod.backup
+*.sum.backup
+
+# Temporary files
+*.tmp
+*.temp
+
+# Config files with secrets
+**/.claude/settings.local.json
+.env
+.env.local
+.env.*.local
+config.local.*
+
+# Node.js (for chat frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Next.js
+.next/
+out/
+
+# Bun
+.bun
+
+# Coverage reports
+coverage/
+*.coverprofile
+
+# IDE
+*.code-workspace
+
+# Coordinator secrets
+coordinator/.env
+coordinator/wrangler.toml.local
+
+# iOS
+ios/build/
+ios/DerivedData/
+ios/*.xcuserstate
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Claude Code
+CLAUDE.md

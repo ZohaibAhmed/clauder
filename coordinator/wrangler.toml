@@ -1,0 +1,11 @@
+name = "claude-code-coordinator"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# KV namespace for session storage
+# NOTE: You need to create your own KV namespace and update the ID below
+# Run: wrangler kv:namespace create "SESSIONS"
+[[kv_namespaces]]
+binding = "SESSIONS"
+# Replace with your own KV namespace ID
+id = "YOUR_KV_NAMESPACE_ID_HERE"

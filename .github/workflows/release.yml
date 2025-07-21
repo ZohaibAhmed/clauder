@@ -1,0 +1,69 @@
+name: Build Release Binaries
+
+on:
+  release:
+    types: [created, published, edited]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      create-artifact:
+        description: 'Create build artifact'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    name: Build Release Binaries
+    runs-on: depot-ubuntu-22.04-4
+    if: ${{ github.repository_owner == 'coder' }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: 'stable'
+
+    - name: Set up Bun
+      uses: oven-sh/setup-bun@v2
+
+    - name: Install Chat Dependencies
+      run: cd chat && bun install
+
+    - name: Build and Upload
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        build_variants=(
+          "linux amd64 agentapi-linux-amd64"
+          "linux arm64 agentapi-linux-arm64"
+          "darwin amd64 agentapi-darwin-amd64"
+          "darwin arm64 agentapi-darwin-arm64"
+          "windows amd64 agentapi-windows-amd64.exe"
+        )
+
+        for variant in "${build_variants[@]}"; do
+          read -r goos goarch artifact_name <<< "$variant"
+
+          echo "Building for GOOS=$goos GOARCH=$goarch..."
+          GOOS=$goos GOARCH=$goarch BINPATH="out/$artifact_name" make build
+        done
+
+    - name: Upload Build Artifact
+      if: ${{ inputs.create-artifact }}
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: agentapi-build
+        path: ${{ github.workspace }}/out
+        retention-days: 7
+
+    - name: Upload Release Assets
+      if: ${{ github.event_name == 'release' || github.ref == 'refs/heads/main' }}
+      run: gh release upload "$RELEASE_TAG" "$GITHUB_WORKSPACE"/out/* --clobber
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RELEASE_TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || 'preview' }}

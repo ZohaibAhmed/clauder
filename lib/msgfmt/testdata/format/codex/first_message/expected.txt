@@ -1,0 +1,12 @@
+╭──────────────────────────────────────────────────────────────╮
+│ ● OpenAI Codex (research preview) v0.1.2504161551            │
+╰──────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────╮
+│ localhost session: c4bf4c89c3fb483c935bdff223394646          │
+│ ↳ workdir: ~/dev/agentapi                                    │
+│ ↳ model: o4-mini                                             │
+│ ↳ approval: suggest                                          │
+╰──────────────────────────────────────────────────────────────╯
+
+    system
+    Warning: model "o4-mini" is not in the list of available models returned by OpenAI.
