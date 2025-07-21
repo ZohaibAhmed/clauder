@@ -251,4 +251,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Inspired by the need for remote coding capabilities and built with modern web technologies.
+Built on top of the fantastic [AgentAPI](https://github.com/coder/agentapi) project.
