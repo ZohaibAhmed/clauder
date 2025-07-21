@@ -1,8 +1,12 @@
+
+<img width="1920" height="1080" alt="in-app" src="https://github.com/user-attachments/assets/f571e847-ac17-42df-893e-cf0470aaa13d" />
+
 # Clauder
 
 Control [Claude Code](https://claude.ai/code) from your iPhone with secure remote access. Clauder provides an iOS app for remote coding sessions.
 
-![agentapi-chat](https://github.com/user-attachments/assets/57032c9f-4146-4b66-b219-09e38ab7690d)
+![clauder-quick](https://github.com/user-attachments/assets/eb35b9ec-bbd2-4461-98ac-1b3538538d7f)
+
 
 **Key Features:**
 - **Remote iOS Access**: Control Claude Code from your iPhone using a simple passcode
